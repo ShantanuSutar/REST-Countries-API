@@ -32,3 +32,26 @@ header {
 header h1 {
   font-weight: 800;
 }
+
+.toggle {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  font-size: 22px;
+  padding: 10px 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--White-Dark-Mode-Text-and-Light-Mode-Elements);
+}
+
+.toggle:hover {
+  cursor: pointer;
+  background-color: var(--Very-Light-Gray-Light-Mode-Background);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.toggle svg {
+  margin-right: 10px;
+}
