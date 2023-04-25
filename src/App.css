@@ -20,3 +20,15 @@
 body {
   background-color: var(--Very-Light-Gray-Light-Mode-Background);
 }
+header {
+  display: flex;
+  /* border: 1px solid red; */
+  justify-content: space-between;
+  padding: 20px 40px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+header h1 {
+  font-weight: 800;
+}
