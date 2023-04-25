@@ -55,3 +55,53 @@ header h1 {
 .toggle svg {
   margin-right: 10px;
 }
+
+.country {
+  /* border: 1px solid red; */
+  width: 300px;
+  margin: 10px;
+  margin-bottom: 55px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.country:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.country picture {
+  width: 100%;
+}
+
+.country section {
+  padding: 25px;
+  padding-top: 5px;
+}
+
+.country img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  height: 170px;
+  padding: 0;
+  transition: all 0.1s ease-in-out;
+  object-fit: cover;
+}
+/* 
+.country img:hover {
+  transform: scale(1.05);
+} */
+.country h2 {
+  margin-top: 15px;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.country .country-info-highlight {
+  font-weight: 600;
+}
+
+.country p {
+  font-weight: 300;
+  margin-top: 10px;
+}
