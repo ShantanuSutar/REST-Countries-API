@@ -36,24 +36,26 @@ const App = () => {
           Light
         </button>
       </header>
-      <section className="countries-info">
-        {!noCountries ? (
-          countries.map((country, index) => {
-            return (
-              <Country
-                key={index}
-                name={country.name.common}
-                capital={country.capital}
-                population={country.population}
-                flag={country.flags.png}
-                region={country.region}
-              />
-            );
-          })
-        ) : (
-          <p>No Countries Found</p>
-        )}
-      </section>
+      <div className="countries">
+        <section className="countries-info">
+          {!noCountries ? (
+            countries.map((country, index) => {
+              return (
+                <Country
+                  key={index}
+                  name={country.name.common}
+                  capital={country.capital}
+                  population={country.population}
+                  flag={country.flags.png}
+                  region={country.region}
+                />
+              );
+            })
+          ) : (
+            <p>No Countries Found</p>
+          )}
+        </section>
+      </div>
     </div>
   );
 };

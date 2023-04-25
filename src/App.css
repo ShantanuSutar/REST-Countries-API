@@ -105,3 +105,17 @@ header h1 {
   font-weight: 300;
   margin-top: 10px;
 }
+
+.countries {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.countries-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
