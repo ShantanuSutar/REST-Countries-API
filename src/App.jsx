@@ -7,6 +7,7 @@ const url = "https://restcountries.com/v3.1/all";
 
 const App = () => {
   const [countries, setCountries] = useState([]);
+  const noCountries = countries.status || countries.message;
 
   let response = [];
   const fetchData = async () => {
@@ -35,7 +36,24 @@ const App = () => {
           Light
         </button>
       </header>
-      <Country />
+      <section className="countries-info">
+        {!noCountries ? (
+          countries.map((country, index) => {
+            return (
+              <Country
+                key={index}
+                name={country.name.common}
+                capital={country.capital}
+                population={country.population}
+                flag={country.flags.png}
+                region={country.region}
+              />
+            );
+          })
+        ) : (
+          <p>No Countries Found</p>
+        )}
+      </section>
     </div>
   );
 };
