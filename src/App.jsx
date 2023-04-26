@@ -43,6 +43,30 @@ const App = () => {
     }
   };
 
+  const handleRegion = (e) => {
+    const region = e.target.value;
+
+    if (region !== "All") {
+      const fetchSearch = async () => {
+        const fetchData = await fetch(
+          `https://restcountries.com/v3.1/region/${region}`
+        );
+        const response = await fetchData.json();
+        if (response.status !== 404) {
+          setCountries(response);
+        }
+      };
+
+      try {
+        fetchSearch();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      fetchData();
+    }
+  };
+
   useEffect(() => {
     try {
       fetchData();
@@ -70,6 +94,19 @@ const App = () => {
               placeholder="Search for a country..."
             />
           </section>
+          <form action="/">
+            <select name="region" id="region" onChange={handleRegion}>
+              <option disabled selected value>
+                Region
+              </option>
+              <option value="All">All</option>
+              <option value="Asia">Asia</option>
+              <option value="Africa">Africa</option>
+              <option value="America">America</option>
+              <option value="Europe">Europe</option>
+              <option value="Oceania">Oceania</option>
+            </select>
+          </form>
         </section>
         <section className="countries-info">
           {!noCountries ? (
