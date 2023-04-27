@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, Routes, Route, BrowserRouter } from "react-router-dom";
 import { MdOutlineLightMode } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import "./App.css";
 import Country from "./Country";
+import CountryDetails from "./CountryDetails";
 
 const url = "https://restcountries.com/v3.1/all";
 
 const App = () => {
   const [countries, setCountries] = useState([]);
   const noCountries = countries.status || countries.message;
+  const navigate = useNavigate();
+
+  const showDetails = (code) => {
+    navigate(`/${code}`);
+  };
 
   let response = [];
   const fetchData = async () => {
@@ -84,49 +91,62 @@ const App = () => {
           Light
         </button>
       </header>
-      <div className="countries">
-        <section className="search-filter">
-          <section>
-            <AiOutlineSearch />
-            <input
-              onChange={handleSearch}
-              type="text"
-              placeholder="Search for a country..."
-            />
-          </section>
-          <form action="/">
-            <select name="region" id="region" onChange={handleRegion}>
-              <option disabled selected value>
-                Region
-              </option>
-              <option value="All">All</option>
-              <option value="Asia">Asia</option>
-              <option value="Africa">Africa</option>
-              <option value="America">America</option>
-              <option value="Europe">Europe</option>
-              <option value="Oceania">Oceania</option>
-            </select>
-          </form>
-        </section>
-        <section className="countries-info">
-          {!noCountries ? (
-            countries.map((country, index) => {
-              return (
-                <Country
-                  key={index}
-                  name={country.name.common}
-                  capital={country.capital}
-                  population={country.population}
-                  flag={country.flags.png}
-                  region={country.region}
-                />
-              );
-            })
-          ) : (
-            <p>No Countries Found</p>
-          )}
-        </section>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="countries">
+              <section className="search-filter">
+                <section>
+                  <AiOutlineSearch />
+                  <input
+                    onChange={handleSearch}
+                    type="text"
+                    placeholder="Search for a country..."
+                  />
+                </section>
+                <form action="/">
+                  <select name="region" id="region" onChange={handleRegion}>
+                    <option disabled selected value>
+                      Region
+                    </option>
+                    <option value="All">All</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Africa">Africa</option>
+                    <option value="America">America</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                  </select>
+                </form>
+              </section>
+              <section className="countries-info">
+                {!noCountries ? (
+                  countries.map((country, index) => {
+                    return (
+                      <Country
+                        key={index}
+                        code={country.name.common}
+                        name={country.name.common}
+                        capital={country.capital}
+                        population={country.population}
+                        flag={country.flags.png}
+                        region={country.region}
+                        showDetails={showDetails}
+                      />
+                    );
+                  })
+                ) : (
+                  <p>No Countries Found</p>
+                )}
+              </section>
+            </div>
+          }
+        ></Route>
+        <Route
+          path="/:countryName"
+          element={<CountryDetails countries={countries} />}
+        ></Route>
+      </Routes>
     </div>
   );
 };
