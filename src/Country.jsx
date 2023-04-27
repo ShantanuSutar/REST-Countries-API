@@ -1,8 +1,20 @@
 import React from "react";
 
-const Country = ({ name, population, capital, region, flag }) => {
+const Country = ({
+  name,
+  capital,
+  population,
+  flag,
+  region,
+  showDetails,
+  code,
+}) => {
+  const showDetailsHandler = () => {
+    showDetails(code);
+  };
+
   return (
-    <div className="country">
+    <div className="country" onClick={showDetailsHandler}>
       <picture>
         <img src={flag} alt="Country Flag" />
       </picture>
