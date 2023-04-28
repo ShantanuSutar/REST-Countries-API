@@ -11,6 +11,7 @@ const url = "https://restcountries.com/v3.1/all";
 const App = () => {
   const [countries, setCountries] = useState([]);
   const noCountries = countries.status || countries.message;
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const showDetails = (code) => {
@@ -19,10 +20,12 @@ const App = () => {
 
   let response = [];
   const fetchData = async () => {
-    response = await fetch(url).then((res) => {
-      return res.json();
-    });
-
+    setLoading(true);
+    response = await fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then(setLoading(false));
     console.log(response);
     setCountries(response);
   };
@@ -51,14 +54,16 @@ const App = () => {
   };
 
   const handleRegion = (e) => {
+    setLoading(true);
     const region = e.target.value;
-
+    console.log(region);
     if (region !== "All") {
       const fetchSearch = async () => {
         const fetchData = await fetch(
           `https://restcountries.com/v3.1/region/${region}`
         );
-        const response = await fetchData.json();
+        const response = await fetchData.json().then(setLoading(false));
+
         if (response.status !== 404) {
           setCountries(response);
         }
@@ -95,51 +100,57 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="countries">
-              <section className="search-filter">
-                <section>
-                  <AiOutlineSearch />
-                  <input
-                    onChange={handleSearch}
-                    type="text"
-                    placeholder="Search for a country..."
-                  />
-                </section>
-                <form action="/">
-                  <select name="region" id="region" onChange={handleRegion}>
-                    <option disabled selected value>
-                      Region
-                    </option>
-                    <option value="All">All</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Africa">Africa</option>
-                    <option value="America">America</option>
-                    <option value="Europe">Europe</option>
-                    <option value="Oceania">Oceania</option>
-                  </select>
-                </form>
-              </section>
-              <section className="countries-info">
-                {!noCountries ? (
-                  countries.map((country, index) => {
-                    return (
-                      <Country
-                        key={index}
-                        code={country.name.common}
-                        name={country.name.common}
-                        capital={country.capital}
-                        population={country.population}
-                        flag={country.flags.png}
-                        region={country.region}
-                        showDetails={showDetails}
+            loading ? (
+              <div className="loading">Loading . . .</div>
+            ) : (
+              <>
+                <div className="countries">
+                  <section className="search-filter">
+                    <section>
+                      <AiOutlineSearch />
+                      <input
+                        onChange={handleSearch}
+                        type="text"
+                        placeholder="Search for a country..."
                       />
-                    );
-                  })
-                ) : (
-                  <p>No Countries Found</p>
-                )}
-              </section>
-            </div>
+                    </section>
+                    <form action="/">
+                      <select name="region" id="region" onChange={handleRegion}>
+                        <option disabled selected value>
+                          Region
+                        </option>
+                        <option value="All">All</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Africa">Africa</option>
+                        <option value="America">America</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceania</option>
+                      </select>
+                    </form>
+                  </section>
+                  <section className="countries-info">
+                    {!noCountries ? (
+                      countries.map((country, index) => {
+                        return (
+                          <Country
+                            key={index}
+                            code={country.name.common}
+                            name={country.name.common}
+                            capital={country.capital}
+                            population={country.population}
+                            flag={country.flags.png}
+                            region={country.region}
+                            showDetails={showDetails}
+                          />
+                        );
+                      })
+                    ) : (
+                      <p>No Countries Found</p>
+                    )}
+                  </section>
+                </div>
+              </>
+            )
           }
         ></Route>
         <Route
