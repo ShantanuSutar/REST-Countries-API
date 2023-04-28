@@ -50,8 +50,11 @@ const CountryDetails = ({ countries, dark }) => {
   });
 
   return (
-    <div className="country-details">
-      <button className="back-btn" onClick={() => navigate(-1)}>
+    <div className={dark ? "country-details dark" : "country-details"}>
+      <button
+        className={dark ? "back-btn dark" : "back-btn"}
+        onClick={() => navigate(-1)}
+      >
         <BsArrowLeft />
         Back
       </button>

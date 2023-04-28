@@ -1,6 +1,7 @@
 import React from "react";
 
 const Country = ({
+  dark,
   name,
   capital,
   population,
@@ -14,7 +15,10 @@ const Country = ({
   };
 
   return (
-    <div className="country" onClick={showDetailsHandler}>
+    <div
+      className={dark ? "country dark" : "country"}
+      onClick={showDetailsHandler}
+    >
       <picture>
         <img src={flag} alt="Country Flag" />
       </picture>

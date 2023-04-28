@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Routes, Route, BrowserRouter } from "react-router-dom";
-import { MdOutlineLightMode } from "react-icons/md";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import "./App.css";
 import Country from "./Country";
@@ -10,9 +10,10 @@ const url = "https://restcountries.com/v3.1/all";
 
 const App = () => {
   const [countries, setCountries] = useState([]);
-  const noCountries = countries.status || countries.message;
+  const [dark, setDark] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const noCountries = countries.status || countries.message;
 
   const showDetails = (code) => {
     navigate(`/${code}`);
@@ -79,6 +80,10 @@ const App = () => {
     }
   };
 
+  const handleClick = () => {
+    setDark(!dark);
+  };
+
   useEffect(() => {
     try {
       fetchData();
@@ -88,12 +93,24 @@ const App = () => {
   }, []);
 
   return (
-    <div className="container">
-      <header>
+    <div className={dark ? "container dark" : "container"}>
+      <header className={dark ? "header dark" : ""}>
         <h1>Where in the world?</h1>
-        <button className="toggle">
-          <MdOutlineLightMode />
-          Light
+        <button
+          onClick={handleClick}
+          className={dark ? "toggle dark" : "toggle"}
+        >
+          {dark ? (
+            <>
+              <MdOutlineLightMode />
+              Light
+            </>
+          ) : (
+            <>
+              <MdOutlineDarkMode />
+              Dark
+            </>
+          )}
         </button>
       </header>
       <Routes>
@@ -101,12 +118,14 @@ const App = () => {
           path="/"
           element={
             loading ? (
-              <div className="loading">Loading . . .</div>
+              <div className={dark ? "loading dark" : "loading"}>
+                Loading . . .
+              </div>
             ) : (
               <>
-                <div className="countries">
+                <div className={dark ? "countries dark" : "countries"}>
                   <section className="search-filter">
-                    <section>
+                    <section className={dark ? "dark" : ""}>
                       <AiOutlineSearch />
                       <input
                         onChange={handleSearch}
@@ -114,7 +133,7 @@ const App = () => {
                         placeholder="Search for a country..."
                       />
                     </section>
-                    <form action="/">
+                    <form action="/" className={dark ? "dark" : ""}>
                       <select name="region" id="region" onChange={handleRegion}>
                         <option disabled selected value>
                           Region
@@ -133,6 +152,7 @@ const App = () => {
                       countries.map((country, index) => {
                         return (
                           <Country
+                            dark={dark}
                             key={index}
                             code={country.name.common}
                             name={country.name.common}
@@ -155,7 +175,7 @@ const App = () => {
         ></Route>
         <Route
           path="/:countryName"
-          element={<CountryDetails countries={countries} />}
+          element={<CountryDetails countries={countries} dark={dark} />}
         ></Route>
       </Routes>
     </div>
