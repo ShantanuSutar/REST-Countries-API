@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# The REST Countries API with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The REST Countries API is a web service that provides information about countries around the world.
 
-## Available Scripts
+It allows users to query information such as a country's name, population, capital city, currency, language, and more.
 
-In the project directory, you can run:
+The data is presented in a JSON format, making it easy for developers to integrate into their applications.
 
-### `npm start`
+The REST Countries API with React is a web application that allows users to search for and view information about countries around the world. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The app is built using React and React Hooks, making it a modern and efficient solution for consuming the REST Countries API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Navigate between different pages using client-side routing with React Router.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Live URL
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Link : https://shantanu-where-in-the-world.netlify.app/
+## Screenshots
+- Light Mode :- 
+1. Main Page
+![App Screenshot](https://i.postimg.cc/NGCn9Vmk/Screenshot-200.png
+)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Search 
+![App Screenshot](https://i.postimg.cc/bJ3BRVM8/Screenshot-205.png
+)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Country Details Page
+![App Screenshot](https://i.postimg.cc/43CkKMCS/Screenshot-202.png
+)
 
-### `npm run eject`
+- Dark Mode:-
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Main Page
+![App Screenshot](https://i.postimg.cc/m206VHdc/Screenshot-204.png
+)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Country Details Page
+![App Screenshot](https://i.postimg.cc/KjWp6kxH/Screenshot-203.png
+)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Features :-
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Light/dark mode toggle
+- All Screens Responsive
+- Search Filter
+- Region Filter
+- Details Page
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Tech Used :-
 
-### Analyzing the Bundle Size
+- React 
+- React Router
+- React Hooks
+- Vanilla CSS
+- React Icons
+## Lessons Learned :-
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Working with APIs
 
-### Making a Progressive Web App
+Destructuring the Objects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+React Router, Routes
 
-### Advanced Configuration
+React Hooks, useNavigate, useParams, React Icons 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Responsive Design
 
-### Deployment
+Color Combinations for Light And Dark Mode
+## Feedback
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+If you have any feedback, please reach out to me at 
+shantanusutar17@gmail.com 
 
-### `npm run build` fails to minify
+or
+connect with me at
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://www.linkedin.com/in/shantanu-sutar-425591238/
+## Used By
+
+This project is used by : Friends and Family :)
+
+
+
+# Hi, I'm Shantanu! 👋
+A Web-Dev enthusiast currently pursuing IT degree at PCCOE, Pune.
+
+## 🔗 Links
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shantanu-sutar-425591238/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ShantanuSutar17)
+
+
+## About Me
+👩‍💻 I'm currently working on Personal Projects
+
+🧠 I'm currently learning React
+
+👯‍♀️ I'm looking to collaborate on Web Development
+
+💬 Ask me about Frontend
+
+📫 How to reach me shantanusutar17@gmail.com
+
+⚡️ Fun fact Whatever happens, happens ...
+
