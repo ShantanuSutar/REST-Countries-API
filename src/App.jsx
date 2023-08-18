@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Routes, Route, BrowserRouter } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import "./App.css";
 import Country from "./Country";
-import CountryDetails from "./CountryDetails";
+import CountryDetails from "./components/CountryDetails/CountryDetails";
+/// Scroll button
 
+import { Fragment } from "react";
+import ScrollButton from "./components/ScrollButton/ScrollButton";
+
+///
 const url = "https://restcountries.com/v3.1/all";
 
 const App = () => {
@@ -27,7 +32,6 @@ const App = () => {
         return res.json();
       })
       .then(setLoading(false));
-    console.log(response);
     setCountries(response);
   };
 
@@ -133,11 +137,12 @@ const App = () => {
                         placeholder="Search for a country..."
                       />
                     </section>
-                    <form action="/" className={dark ? "dark" : ""}>
-                      <select name="region" id="region" onChange={handleRegion}>
-                        <option disabled selected value>
-                          Region
-                        </option>
+                    <form
+                      onSubmit={(e) => e.preventDefault()}
+                      className={dark ? "dark" : ""}
+                    >
+                      <select name="region" onChange={handleRegion}>
+                        <option value="">Region</option>
                         <option value="All">All</option>
                         <option value="Asia">Asia</option>
                         <option value="Africa">Africa</option>
@@ -149,7 +154,7 @@ const App = () => {
                   </section>
                   <section className="countries-info">
                     {!noCountries ? (
-                      countries.map((country, index) => {
+                      countries?.map((country, index) => {
                         return (
                           <Country
                             dark={dark}
@@ -175,9 +180,13 @@ const App = () => {
         ></Route>
         <Route
           path="/:countryName"
-          element={<CountryDetails countries={countries} dark={dark} />}
+          element={<CountryDetails dark={dark} />}
         ></Route>
       </Routes>
+      <Fragment>
+        {/* <Heading>GeeksForGeeks</Heading> */}
+        <ScrollButton />
+      </Fragment>
     </div>
   );
 };
