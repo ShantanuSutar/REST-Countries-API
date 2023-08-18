@@ -20,6 +20,11 @@
 body {
   background-color: var(--Very-Light-Gray-Light-Mode-Background);
 }
+
+.container {
+  min-height: 100vh;
+}
+
 header {
   display: flex;
   /* border: 1px solid red; */
@@ -326,6 +331,7 @@ header h1 {
   .country-details {
     margin: 0;
     padding: 2rem;
+    min-height: 120vh;
   }
 
   .country-details-body {
